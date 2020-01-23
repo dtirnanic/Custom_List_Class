@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    class Program
+    public class CustomList<T>
     {
-        static void Main(string[] args)
+        T[] items;
+        public int count;
+        List<int> list = new List<int>();
+
+        public void Add(T items)
         {
-            
 
         }
     }
