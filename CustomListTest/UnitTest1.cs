@@ -113,5 +113,27 @@ namespace CustomListTest
             //Assert
             Assert.AreEqual(value, myList[0]);
         }
+
+        [TestMethod]
+        public void Check_Eight_Capacity_Array()
+        {
+            //Arrange   
+            CustomList<int> myList = new CustomList<int>();
+            int value = 5;
+            int value2 = 10;
+            int value3 = 11;
+            int value4 = 12;
+            int value5 = 13;
+
+            //Arrange
+            myList.Add(value);
+            myList.Add(value2);
+            myList.Add(value3);
+            myList.Add(value4);
+            myList.Add(value5);
+
+            //Assert
+            Assert.AreEqual(value, myList[0]);
+        }
     }
 }
