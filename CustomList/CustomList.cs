@@ -61,7 +61,23 @@ namespace CustomList
             
         }
 
+        public void Remove(T item)
+        {            
+            T[] tempArray = new T[capacity];
 
+            for (int i = 0; i < count+1; i++)
+            {
+                if (!items[i].Equals(item)) 
+                {
+                    tempArray[i] = items[i];
+                }
+                else
+                {   
+                    count--;
+                }
+            }
+            items = tempArray; 
+        }
     }
 
 
@@ -69,13 +85,4 @@ namespace CustomList
 
     
 
-    //item.Copy(capacity);               
-    //item.Equals()
-    //(capacity * 2);
-    //items.Clone(capacity);
-
-  //what happens if count and capacity are equal
-   //copy count
-   //add copy to existing count
-   //clear values from new array
-   //add next item in list
+   

@@ -135,5 +135,47 @@ namespace CustomListTest
             //Assert
             Assert.AreEqual(value, myList[0]);
         }
+
+        //Tests for Remove method
+        [TestMethod]
+        public void Check_CountAfterOneRemove_index_()
+        {
+            //Arrange   
+            CustomList<int> myList = new CustomList<int>();
+            int value = 5;
+            int value2 = 6;
+            int value3 = 7;
+
+            //Arrange
+            myList.Add(value);
+            myList.Add(value2);
+            myList.Add(value3);
+            myList.Remove(value2);
+
+            //Assert
+            Assert.AreEqual( myList.count, 2);
+        }
+
+        [TestMethod]
+        public void Check_CountAfterTwoRemove_index_()
+        {
+            //Arrange   
+            CustomList<int> myList = new CustomList<int>();
+            int value = 5;
+            int value2 = 6;
+            int value3 = 7;
+
+            //Arrange
+            myList.Add(value);
+            myList.Add(value2);
+            myList.Add(value3);
+            myList.Remove(value2);
+            myList.Remove(value3);
+
+            //Assert
+            Assert.AreEqual(myList.count, 1);
+        }
+
     }
+
 }
