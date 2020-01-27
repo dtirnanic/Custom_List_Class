@@ -176,6 +176,36 @@ namespace CustomListTest
             Assert.AreEqual(myList.count, 1);
         }
 
+        [TestMethod]
+        public void Remove_Nonduplicates()
+        {
+            //Arrange   
+            CustomList<int> myList = new CustomList<int>();
+
+
+            //Arrange
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(9);
+            myList.Add(2);
+            myList.Add(5);
+            myList.Remove(2);
+
+            //Assert
+            Assert.AreEqual(myList[2], 2);
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void SetCondition_IndexItOutOfBounds_ExceptionIsThrown()
+        {
+            // Arrange
+            CustomList<int> List = new CustomList<int>();
+
+            // Act
+            int bullShitPlacer = List[3]; 
+        }
     }
 
 }

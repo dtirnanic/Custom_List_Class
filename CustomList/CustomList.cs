@@ -14,11 +14,21 @@ namespace CustomList
         public int count { get; set; }
         T[] items;
         
-       
+        
 
         public T this[int i]
         {
-            get { return items[i]; }
+            get 
+            { 
+                if (count < i || i < 0)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                else
+                {
+                    return items[i];
+                }
+            }
             set { items[i] = value; }
         }
 
@@ -63,20 +73,22 @@ namespace CustomList
 
         public void Remove(T item)
         {            
-            T[] tempArray = new T[capacity];
-
-            for (int i = 0; i < count+1; i++)
+ 
+            bool hasFound = false;
+            for (int i = 0; i < count; i++) 
             {
-                if (!items[i].Equals(item)) 
+                if (items[i].Equals(item) && hasFound == false)
                 {
-                    tempArray[i] = items[i];
-                }
-                else
-                {   
+                    hasFound = true;
                     count--;
                 }
+                if (hasFound == true)
+                {
+                    items[i] = items[i + 1];
+                }
+                
             }
-            items = tempArray; 
+
         }
     }
 
