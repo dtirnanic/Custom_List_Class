@@ -195,17 +195,70 @@ namespace CustomListTest
             Assert.AreEqual(myList[2], 2);
         }
 
+        [TestMethod]
+        public void Check_Zip_List()
+        {
+            //Arrange   
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            int expectedResult = 123456;
+            //Arrange
+            odd.Zip(odd, even);
+
+            //Assert
+            Assert.AreEqual(expectedResult,123456);
+        }
 
         [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void SetCondition_IndexItOutOfBounds_ExceptionIsThrown()
+        public void Check_Add2Lists_index_()
         {
-            // Arrange
-            CustomList<int> List = new CustomList<int>();
+            //Arrange   
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int>  addOperator = new CustomList<int>();
+            int expectedResult = 135246;
 
-            // Act
-            int bullShitPlacer = List[3]; 
+            //Arrange
+            addOperator = odd + even;
+
+            //Assert
+            Assert.AreEqual(expectedResult, 135246);
+        }
+
+
+        [TestMethod]
+        public void Check_Remove2Lists_index_()
+        {
+            //Arrange   
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5 , 7};
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> removeOperator = new CustomList<int>();
+            int expectedResult = 7;
+
+            //Arrange
+            removeOperator = odd - even;
+
+            //Assert
+            Assert.AreEqual(expectedResult, 7);
+        }
+
+        [TestMethod]
+        public void Check_ToString_index_()
+        {
+            //Arrange   
+            CustomList<int> myList = new CustomList<int>();
+            string expectedValue = "123";
+
+            //Arrange
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            
+
+            //Assert
+            Assert.AreEqual(expectedValue, myList.ToString());
         }
     }
+
 
 }
