@@ -88,16 +88,26 @@ namespace CustomList
             items = tempArray;
         }
 
-        public CustomList<T> Zip(CustomList<T> list1, CustomList<T> list2)
+        public static CustomList<T> Zip(CustomList<T> list1, CustomList<T> list2)
         {
+            int i = 0;
             CustomList<T> zipList = new CustomList<T>();
 
-            for (int i = 0; i < count; i++)
+            do
             {
-                zipList.Add(list1[i]);
-                zipList.Add(list2[i]);
+                if (i + 1 <= list1.count)
+                {
+                    zipList.Add(list1[i]);
+                }
 
+                if (i + 1 <= list2.count)
+                {
+                    zipList.Add(list2[i]);
+                }
+                i++;
             }
+            while ((i+1 <= list1.count) || (i+1 <= list2.count));
+
             return zipList;
         }
 

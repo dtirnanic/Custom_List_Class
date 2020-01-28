@@ -138,7 +138,7 @@ namespace CustomListTest
 
         //Tests for Remove method
         [TestMethod]
-        public void Check_CountAfterOneRemove_index_()
+        public void Check_CountAfterOne_Remove()
         {
             //Arrange   
             CustomList<int> myList = new CustomList<int>();
@@ -157,7 +157,7 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        public void Check_CountAfterTwoRemove_index_()
+        public void Check_CountAfterTwo_Remove()
         {
             //Arrange   
             CustomList<int> myList = new CustomList<int>();
@@ -177,7 +177,7 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        public void Remove_Nonduplicates()
+        public void Check_Nonduplicates_Remove()
         {
             //Arrange   
             CustomList<int> myList = new CustomList<int>();
@@ -196,46 +196,113 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        public void Check_Zip_List()
+        public void Check_Zip_ZipList()
         {
             //Arrange   
             CustomList<int> odd = new CustomList<int>() { 1, 3, 5 };
             CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> zipList;
+
             int expectedResult = 123456;
             //Arrange
-            odd.Zip(odd, even);
+            zipList = CustomList<int>.Zip(odd, even);
 
             //Assert
             Assert.AreEqual(expectedResult,123456);
         }
 
         [TestMethod]
-        public void Check_Add2Lists_index_()
+        public void Check_ZipWithRemainder_ZipList1()
+        {
+            //Arrange   
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5, 7, 9};
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> zipList = new CustomList<int>();
+            string expectedResult = "12345679";
+            //Act
+            zipList = CustomList<int>.Zip(odd, even);
+            string actualResult = zipList.ToString();
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void Check_ZipWithRemainder_ZipList2()
+        {
+            //Arrange   
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6, 8, 10 };
+            CustomList<int> zipList = new CustomList<int>();
+            string expectedResult = "123456810";
+            //Act
+            zipList = CustomList<int>.Zip(odd, even);
+            string actualResult = zipList.ToString();
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void Check_AddOperator2Lists_AddLists()
         {
             //Arrange   
             CustomList<int> odd = new CustomList<int>() { 1, 3, 5 };
             CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
             CustomList<int>  addOperator = new CustomList<int>();
-            int expectedResult = 135246;
+            string expectedResult = "135246";
 
-            //Arrange
+            //Act
             addOperator = odd + even;
+            string actualResult = addOperator.ToString();
 
             //Assert
-            Assert.AreEqual(expectedResult, 135246);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
 
         [TestMethod]
-        public void Check_Remove2Lists_index_()
+        public void Check_AddOperator2Lists_AddWithRemainder()
         {
             //Arrange   
-            CustomList<int> odd = new CustomList<int>() { 1, 3, 5 , 7};
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5 , 7, 9};
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> addOperator = new CustomList<int>();
+            int expectedResult = 13524679;
+
+            //Act
+            addOperator = odd + even;
+
+            //Assert
+            Assert.AreEqual(expectedResult, 13524679);
+        }
+
+
+        [TestMethod]
+        public void Check_Remove2Lists_RemoveNoemainder()
+        {
+            //Arrange   
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5};
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6};
+            CustomList<int> removeOperator = new CustomList<int>();
+            string expectedResult = "";
+
+            //Act
+            removeOperator =  odd - even;
+            string actualResult = removeOperator.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void Check_Remove2ListsRemainder_List1Remainder()
+        {
+            //Arrange   
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5, 7 };
             CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
             CustomList<int> removeOperator = new CustomList<int>();
             int expectedResult = 7;
 
-            //Arrange
+            //Act
             removeOperator = odd - even;
 
             //Assert
@@ -243,18 +310,33 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        public void Check_ToString_index_()
+        public void Check_IntToString_String()
         {
             //Arrange   
             CustomList<int> myList = new CustomList<int>();
             string expectedValue = "123";
 
-            //Arrange
+            //Act
             myList.Add(1);
             myList.Add(2);
             myList.Add(3);
             
 
+            //Assert
+            Assert.AreEqual(expectedValue, myList.ToString());
+        }
+
+        [TestMethod]
+        public void Check_Concatanate_String()
+        {
+            //Arrange   
+            CustomList<string> myList = new CustomList<string>();
+            string expectedValue = "Hello World";
+
+            //Act
+            myList.Add("Hello ");
+            myList.Add("World");
+            
             //Assert
             Assert.AreEqual(expectedValue, myList.ToString());
         }
