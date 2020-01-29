@@ -266,18 +266,19 @@ namespace CustomListTest
             CustomList<int> odd = new CustomList<int>() { 1, 3, 5 , 7, 9};
             CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
             CustomList<int> addOperator = new CustomList<int>();
-            int expectedResult = 13524679;
+            string expectedResult = "13579246";
 
             //Act
             addOperator = odd + even;
+            string actualResult = addOperator.ToString();
 
             //Assert
-            Assert.AreEqual(expectedResult, 13524679);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
 
         [TestMethod]
-        public void Check_Remove2Lists_RemoveNoemainder()
+        public void Check_Subtract2Lists_NoRemainder()
         {
             //Arrange   
             CustomList<int> odd = new CustomList<int>() { 1, 3, 5};
@@ -294,19 +295,20 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        public void Check_Remove2ListsRemainder_List1Remainder()
+        public void Check_Subtract2ListsRemainder_List1Remainder()
         {
             //Arrange   
             CustomList<int> odd = new CustomList<int>() { 1, 3, 5, 7 };
             CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
             CustomList<int> removeOperator = new CustomList<int>();
-            int expectedResult = 7;
+            string expectedResult = "7";
 
             //Act
             removeOperator = odd - even;
+            string actualResult = removeOperator.ToString();
 
             //Assert
-            Assert.AreEqual(expectedResult, 7);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
@@ -327,7 +329,24 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        public void Check_Concatanate_String()
+        public void Check_DoubleToString_String()
+        {
+            //Arrange   
+            CustomList<double> myList = new CustomList<double>();
+            string expectedValue = "1.12.23.3";
+
+            //Act
+            myList.Add(1.1);
+            myList.Add(2.2);
+            myList.Add(3.3);
+
+
+            //Assert
+            Assert.AreEqual(expectedValue, myList.ToString());
+        }
+
+        [TestMethod]
+        public void Check_Concatenate_String()
         {
             //Arrange   
             CustomList<string> myList = new CustomList<string>();

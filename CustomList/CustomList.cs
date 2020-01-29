@@ -131,14 +131,19 @@ namespace CustomList
         {
             CustomList<T> list = new CustomList<T>();
 
-            for (int i = 0; i < list1.count; i++)
-            {
-                list.Remove(list1[i]);
-            }
-            for (int i = 0; i < list2.count; i++)
-            {
-                list.Remove(list2[i]);
-            }
+            list = list1 + list2;
+
+                for (int i = 0; i < list1.count; i++)
+                {
+                    list.Remove(list1[i]);
+                }
+
+                for (int i = 0; i < list2.count; i++)
+                {
+                    list.Remove(list2[i]);
+                }
+            
+            
 
             return list;
         }

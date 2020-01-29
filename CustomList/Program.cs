@@ -12,9 +12,10 @@ namespace CustomList
         {
             CustomList<int> odd = new CustomList<int>() { 1, 3, 5, 7, 9 };
             CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
-            CustomList<int> zipList;
+            CustomList<int> List;
 
-            zipList = CustomList<int>.Zip(odd, even); 
+            List = odd - even;
+            Console.WriteLine();
 
             //CustomList<int> list = new CustomList<int>();
             //// foreach loop to test
